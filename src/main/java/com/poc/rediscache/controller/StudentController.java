@@ -26,10 +26,10 @@ public class StudentController {
         return createResponse;
     }
 
-    @GetMapping("/{id}")
-    public Student getStudent(@PathVariable int id) {
+    @GetMapping("/{id}/{name}")
+    public Student getStudent(@PathVariable int id, @PathVariable String name) {
         LocalTime start = LocalTime.now();
-        Student getReponse = studentService.get(id);
+        Student getReponse = studentService.get(id, name);
         LOG.info("time taken: {} milliseconds", start.until(LocalTime.now(), ChronoUnit.MILLIS));
         return getReponse;
     }

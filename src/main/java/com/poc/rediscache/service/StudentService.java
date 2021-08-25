@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public interface StudentService {
     public Student save(Student student);
 
-    public Student get(int id);
+    public Student get(int id, String name);
 
     public void delete(Student student);
 }

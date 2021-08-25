@@ -18,15 +18,15 @@ public class StudentServiceImpl implements StudentService {
     private StudentRepository studentRepository;
 
     @Transactional
-    @CachePut(value = "student", key = "#student.id")
+    @CachePut(value = "student", key = "new org.springframework.cache.interceptor.SimpleKey(#student.id, #student.studentName)")
     public Student save(Student student) {
         Student createResponse = studentRepository.save(student);
         return createResponse;
     }
 
     @Transactional
-    @Cacheable(value = "student", key = "#id")
-    public Student get(int id) {
+    @Cacheable(value = "student", key = "new org.springframework.cache.interceptor.SimpleKey(#id, #name)")
+    public Student get(int id, String name) {
         Student student = null;
         Optional<Student> studentResponse = studentRepository.findById(id);
         if (studentResponse.isPresent()) {
@@ -38,7 +38,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Transactional
-    @CacheEvict(value = "student", key = "#student.id")
+    @CacheEvict(value = "student", key = "new org.springframework.cache.interceptor.SimpleKey(#student.id, #student.studentName)")
     public void delete(Student student) {
         studentRepository.delete(student);
     }
