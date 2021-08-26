@@ -26,8 +26,9 @@ spring:
           lob:
             non_contextual_creation: false
   redis:
-    host: 127.0.0.1
+    host: ec2-34-228-7-216.compute-1.amazonaws.com
     port: 6379
+    password: WpxPbJdgv1SoyMYSKUOCUKu9gUiDECCxx+gAbkdq7FcthZMMc10lSwuQN7rsJypTk9jXHK+KnljXbFJB
   h2:
     console:
       enabled: true
